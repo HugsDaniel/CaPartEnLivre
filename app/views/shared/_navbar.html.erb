@@ -6,7 +6,7 @@
   <div>
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <%= link_to "Toutes les recommandations", root_path, class: "nav-link" %>
       <% else %>
         <%= link_to "Me connecter", new_user_session_path, class: "nav-link" %>
       <% end %>
