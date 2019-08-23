@@ -19,6 +19,7 @@
           <div class="card-product-infos">
             <h2><%= book.title %></h2>
             <p><%= book.authors %></p>
+            <p><small>Recommandé par <%= book.user.first_name.capitalize %></small></p>
           </div>
         </div>
       </a>

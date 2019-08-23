@@ -18,32 +18,36 @@
   </div>
 
   <% if @books %>
-    <%@books.each_with_index do |book, index| %>
-      <a class="book-details" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
-        <div class="card-product">
-          <% if book.image_link %>
-            <%= image_tag book.image_link %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= book.title %></h2>
-            <p><%= book.authors %></p>
+    <% if @books.any? %>
+      <%@books.each_with_index do |book, index| %>
+        <a class="book-details" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
+          <div class="card-product">
+            <% if book.image_link %>
+              <%= image_tag book.image_link %>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <% end %>
+            <div class="card-product-infos">
+              <h2><%= book.title %></h2>
+              <p><%= book.authors %></p>
+            </div>
           </div>
-        </div>
-      </a>
-      <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
-        <div class="card-trip">
-          <%= link_to "Partager", books_path(book: { title: book.title, authors: book.authors, published_date: book.published_date, description: book.description, image_link: book.image_link }), method: :post %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= book.published_date[0, 4] %></h2>
-              <p><strong>Résumé</strong></p>
-              <p><%= book.description %></p>
+        </a>
+        <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
+          <div class="card-trip">
+            <%= link_to "Partager", books_path(book: { title: book.title, authors: book.authors, published_date: book.published_date, description: book.description, image_link: book.image_link }), method: :post %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= book.published_date[0, 4] if book.published_date %></h2>
+                <p><strong>Résumé</strong></p>
+                <p><%= book.description %></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>Aucun résultat...</p>
     <% end %>
   <% else %>
     <p>Effectuez une recherche pour voir les résultats!</p>
