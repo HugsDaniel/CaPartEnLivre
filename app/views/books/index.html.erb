@@ -35,7 +35,7 @@
         </a>
         <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
           <div class="card-trip">
-            <%= link_to "Partager", books_path(book: { title: book.title, authors: book.authors, published_date: book.published_date, description: book.description, image_link: book.image_link }), method: :post %>
+            <%= link_to "Partager", books_path(book: { title: book.title, authors: book.authors, published_date: book.published_date, description: book.description, image_link: book.image_link }), class: "btn btn-sm btn-ghost btn-share", method: :post %>
             <div class="card-trip-infos">
               <div>
                 <h2><%= book.published_date[0, 4] if book.published_date %></h2>
