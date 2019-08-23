@@ -2,11 +2,21 @@
   <div class="container">
     <h1>ÇA PART EN LIVRE</h1>
     <p>Joue pas perso, partage tes bouquins !</p>
-    <%= link_to "Recherche un livre et partage le !", books_path, class: "btn btn-flat" %>
   </div>
 </div>
 
 <div class="container">
+  <div class="book-search">
+    <%= simple_form_for :search, url: books_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Chercher un livre..." />
+        <button type="submit" class="btn btn-flat">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+  </div>
+
   <% if @books %>
     <%@books.each_with_index do |book, index| %>
       <a class="book-details" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
@@ -24,6 +34,7 @@
       </a>
       <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
         <div class="card-trip">
+          <%= link_to "Partager", books_path(book: { title: book.title, authors: book.authors, published_date: book.published_date, description: book.description, image_link: book.image_link }), method: :post %>
           <div class="card-trip-infos">
             <div>
               <h2><%= book.published_date[0, 4] %></h2>
@@ -35,6 +46,6 @@
       </div>
     <% end %>
   <% else %>
-    <p>Aucun livre pour le moment... Ajoutes-en !</p>
+    <p>Effectuez une recherche pour voir les résultats!</p>
   <% end %>
 </div>
