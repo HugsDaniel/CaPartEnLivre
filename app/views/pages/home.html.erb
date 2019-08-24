@@ -23,13 +23,46 @@
           </div>
         </div>
       </a>
+
       <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
-        <div class="card-trip">
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= book.published_date[0, 4] %></h2>
-              <p><strong>Résumé</strong></p>
-              <p><%= book.description %></p>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header card-header-white" id="headingOne" data-toggle="collapse" data-target="#collapseOne<%=index%>" aria-expanded="true" aria-controls="collapseOne<%=index%>">
+              <h2 class="mb-0">
+                <div class="btn">
+                  <%= icon('fas', 'chevron-down') %>
+                  Informations
+                </div>
+              </h2>
+            </div>
+
+            <div id="collapseOne<%=index%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="card-trip-home">
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= book.published_date[0, 4] %></h2>
+                      <p><strong>Résumé</strong></p>
+                      <p><%= book.description %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header card-header-white" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo<%=index%>" aria-expanded="false" aria-controls="collapseTwo<%=index%>">
+              <h2 class="mb-0">
+                <div class="btn">
+                  <%= icon('fas', 'chevron-down') %>
+                  Commentaires
+                </div>
+              </h2>
+            </div>
+            <div id="collapseTwo<%=index%>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                TODO
+              </div>
             </div>
           </div>
         </div>
