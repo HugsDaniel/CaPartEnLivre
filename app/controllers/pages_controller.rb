@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @books = Book.all
+    @comment = Comment.new
   end
 end

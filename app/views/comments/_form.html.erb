@@ -1,0 +1,4 @@
+<%= simple_form_for [book, comment], html: { class: "form-inline comment-form" },remote: true do |f| %>
+    <%= f.input :content, class: "form-control mb-2", label: false, placeholder: "Ton commentaire ici..." %>
+    <%= f.submit "Envoyer", class: "btn btn-ghost ml-3" %>
+<% end %>

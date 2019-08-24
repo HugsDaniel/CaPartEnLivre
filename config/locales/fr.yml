@@ -1,0 +1,11 @@
+fr:
+  activerecord:
+    attributes:
+      comment:
+        content: "Le contenu"
+    errors:
+      models:
+        comment:
+          attributes:
+            content:
+              blank: "ne peut pas être vide"
