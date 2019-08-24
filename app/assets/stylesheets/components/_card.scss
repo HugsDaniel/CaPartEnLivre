@@ -68,8 +68,18 @@
   text-decoration: none !important;
 }
 
+.card-product div:last-child {
+  margin-left: auto;
+  padding: 10px;
+}
+
 .card-product-infos {
   text-decoration: none !important;
+}
+
+.card-product-right {
+  right: 0;
+  float: right;
 }
 
 .card-product img {
