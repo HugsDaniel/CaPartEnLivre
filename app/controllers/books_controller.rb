@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class BooksController < ApplicationController
   def index
     if params[:search].present?
