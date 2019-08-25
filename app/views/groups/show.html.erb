@@ -1,0 +1,15 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @group.image, height: 300, width: 400, crop: :fill %>);">
+  <div class="container">
+    <h1><%= @group.name %></h1>
+    <p></p>
+    <%= link_to "Recherche un livre et partage le !", new_group_book_path(@group), class: "btn btn-flat" %>
+  </div>
+</div>
+
+<% if @books.any? %>
+  <%@books.each_with_index do |book, index| %>
+    <%= render 'book', book: book, index: index %>
+  <% end %>
+<% else %>
+  <p>Aucun livre pour le moment... Ajoutes-en !</p>
+<% end %>

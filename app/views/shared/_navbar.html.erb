@@ -1,12 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag "https://docksidephysio.com/wp-content/uploads/2018/08/book-icon.png" %>
     <% end %>
 
   <div>
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <%= link_to "Toutes les recommandations", root_path, class: "nav-link" %>
+        <%= link_to "Créer un groupe", new_group_path, class: "nav-link" %>
       <% else %>
         <%= link_to "Me connecter", new_user_session_path, class: "nav-link" %>
       <% end %>

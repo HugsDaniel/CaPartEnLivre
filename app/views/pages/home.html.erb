@@ -2,16 +2,30 @@
   <div class="container">
     <h1>ÇA PART EN LIVRE</h1>
     <p>Joue pas perso, partage tes bouquins !</p>
-    <%= link_to "Recherche un livre et partage le !", books_path, class: "btn btn-flat" %>
   </div>
 </div>
 
 <div class="container">
-  <% if @books %>
-    <%@books.each_with_index do |book, index| %>
-      <%= render 'book', book: book, index: index %>
+  <% if @groups %>
+    <h3 class="header">Mes groupes</h3>
+    <% @groups.each do |group| %>
+      <%= link_to group_path(group), class: "book-details" do %>
+        <div class="card-product">
+          <% if group.image %>
+            <%= cl_image_tag group.image, crop: :fill, width: 120, height: 120 %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <% end %>
+          <div class="card-product-infos">
+            <h2><%= group.name %></h2>
+            <p><small><%= pluralize(group.members.count, 'membre', plural: 'membres') %></small></p>
+          </div>
+          <div class="card-product-right">
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
-    <p>Aucun livre pour le moment... Ajoutes-en !</p>
+    Vous n'avez aucun groupe !
   <% end %>
 </div>

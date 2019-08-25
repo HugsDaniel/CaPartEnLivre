@@ -61,10 +61,10 @@
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  margin: 15px 0;
+  margin: 8px 0;
   text-decoration: none !important;
 }
 
@@ -108,4 +108,8 @@
 .card-product .card-product-infos {
   padding: 16px;
   text-decoration: none !important;
+}
+
+.card-no-margin {
+  margin: 0;
 }

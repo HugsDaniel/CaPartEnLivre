@@ -1,10 +1,19 @@
 fr:
   activerecord:
     attributes:
+      group:
+        name: "Le nom"
+        image: "L'image"
       comment:
         content: "Le contenu"
     errors:
       models:
+        group:
+          attributes:
+            image:
+              blank: "doit être renseignée"
+            name:
+              blank: "doit être renseigné"
         comment:
           attributes:
             content:

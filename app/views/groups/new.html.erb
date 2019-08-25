@@ -1,0 +1,10 @@
+<div class="container">
+  <h3 class="text-center">Nouveau groupe</h3>
+  <%= simple_form_for @group do |f| %>
+    <%= f.input :name %>
+    <%= f.input :image %>
+    <%= f.input :image_cache, as: :hidden %>
+    <br>
+    <%= f.submit 'Créer', class: 'btn btn-primary' %>
+  <% end %>
+</div>

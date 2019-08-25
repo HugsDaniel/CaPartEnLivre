@@ -1,20 +1,23 @@
 require 'open-uri'
 
 class BooksController < ApplicationController
-  def index
+  def new
+    @group = Group.find(params[:group_id])
     if params[:search].present?
       @books = GoogleBooks.search(params[:search][:query])
     end
   end
 
   def create
+    @group = Group.find(params[:group_id])
     @book = Book.new(book_params)
     @book.user = current_user
+    @book.group = @group
 
     if @book.save
-      redirect_to root_path, notice: "Bien ajouté !"
+      redirect_to group_path(@group), notice: "Bien ajouté !"
     else
-      redirect_to books_path, alert: "Un problème est survenu..."
+      render :new, alert: "Un problème est survenu..."
     end
   end
 
