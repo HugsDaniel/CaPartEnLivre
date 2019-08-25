@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: CaPartEnLivre_production
-  username: CaPartEnLivre
-  password: <%= ENV['CAPARTENLIVRE_DATABASE_PASSWORD'] %>
+    url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
