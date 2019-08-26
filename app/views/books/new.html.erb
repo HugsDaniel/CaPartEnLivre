@@ -1,8 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://upload.wikimedia.org/wikipedia/commons/0/0e/Clementinum_library.jpg);">
-  <div class="container">
-    <h1><%= @group.name %></h1>
-  </div>
-</div>
+<% content_for :title do %>
+  <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
+  <%= link_to @group.name, group_path(@group) %>
+<% end %>
 
 <div class="container">
   <div class="book-search">

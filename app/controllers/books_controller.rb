@@ -13,6 +13,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user = current_user
     @book.group = @group
+    @book.remote_cover_url = @book.image_link
 
     if @book.save
       redirect_to group_path(@group), notice: "Bien ajouté !"

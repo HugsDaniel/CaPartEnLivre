@@ -1,31 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://upload.wikimedia.org/wikipedia/commons/0/0e/Clementinum_library.jpg);">
-  <div class="container">
-    <h1>ÇA PART EN LIVRE</h1>
-    <p>Joue pas perso, partage tes bouquins !</p>
-  </div>
-</div>
+<% content_for :title, 'Groupes' %>
 
-<div class="container">
-  <% if @groups %>
-    <h3 class="header">Mes groupes</h3>
-    <% @groups.each do |group| %>
-      <%= link_to group_path(group), class: "book-details" do %>
-        <div class="card-product">
-          <% if group.image %>
-            <%= cl_image_tag group.image, crop: :fill, width: 120, height: 120 %>
-          <% else %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= group.name %></h2>
-            <p><small><%= pluralize(group.members.count, 'membre', plural: 'membres') %></small></p>
-          </div>
-          <div class="card-product-right">
-          </div>
+<% if @groups %>
+  <% @groups.each do |group| %>
+    <%= link_to group_path(group), class: "book-details" do %>
+      <div class="card-product-group">
+        <% if group.image %>
+          <%= cl_image_tag group.image, crop: :fill, width: 120, height: 120 %>
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <% end %>
+        <div class="card-product-group-infos">
+          <h2><%= group.name %></h2>
+          <p><small><%= pluralize(group.members.count, 'membre', plural: 'membres') %></small></p>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  <% else %>
-    Vous n'avez aucun groupe !
   <% end %>
-</div>
+<% else %>
+  Vous n'avez aucun groupe !
+<% end %>

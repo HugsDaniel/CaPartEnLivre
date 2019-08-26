@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
-    @books = @group.books
+    @books = @group.books.includes(:comments, :user)
     @comment = Comment.new
   end
 

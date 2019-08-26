@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+
+    <div id="dismiss">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <div class="sidebar-header">
+      <% if user_signed_in? %>
+        <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
+        <p><%= current_user.first_name %></p>
+      <% end %>
+    </div>
+
+    <ul class="list-unstyled components">
+      <li>
+        <%= link_to root_path do %>
+          <%= icon("fas", "user-friends") %>
+          <p>Mes groupes</p>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_group_path do %>
+          <%= icon("fas", "user-plus") %>
+          <p>Nouveau groupe</p>
+        <% end %>
+      </li>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to edit_user_path(current_user) do %>
+            <%= icon("fas", "user-edit") %>
+            <p>Profil</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <%= icon("fas", "user-times") %>
+            <p>Me déconnecter</p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <!-- Dark Overlay element -->
+  <div class="overlay"></div>
+</div>

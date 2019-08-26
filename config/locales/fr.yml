@@ -2,10 +2,10 @@ fr:
   activerecord:
     attributes:
       group:
-        name: "Le nom"
-        image: "L'image"
+        name: "Nom"
+        image: "Image"
       comment:
-        content: "Le contenu"
+        content: "Contenu"
     errors:
       models:
         group:

@@ -1,15 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://docksidephysio.com/wp-content/uploads/2018/08/book-icon.png" %>
-    <% end %>
-
-  <div>
-    <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <%= link_to "Créer un groupe", new_group_path, class: "nav-link" %>
-      <% else %>
-        <%= link_to "Me connecter", new_user_session_path, class: "nav-link" %>
-      <% end %>
-    </ul>
+  <div class="navbar-brand" id="sidebarCollapse">
+    <i class="fas fa-bars fa-lg"></i>
+  </div>
+  <div class="navbar-title">
+    <%= yield :title %>
   </div>
 </div>

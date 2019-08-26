@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
 
+  mount_uploader :avatar, AvatarUploader
+
   def add_to(group)
     Membership.create(user: self, group: group)
   end

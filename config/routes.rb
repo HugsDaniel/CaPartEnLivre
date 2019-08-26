@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :groups, only: [:new, :create, :show] do
     resources :books, only: [:new, :create]
+    resources :members, only: [:new, :create]
   end
+  resources :users, only: [:edit, :update]
 end

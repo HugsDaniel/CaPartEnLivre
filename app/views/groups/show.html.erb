@@ -1,9 +1,34 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @group.image, height: 300, width: 400, crop: :fill %>);">
-  <div class="container">
-    <h1><%= @group.name %></h1>
-    <p></p>
-    <%= link_to "Recherche un livre et partage le !", new_group_book_path(@group), class: "btn btn-flat" %>
+<% content_for :title do %>
+  <a @group.name, data-toggle="collapse" href="#groupDetailsCollapse" role="button" aria-expanded="false" aria-controls="groupDetailsCollapse">
+    <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
+    <%= @group.name %>
+  </a>
+<% end %>
+<div class="collapse" id="groupDetailsCollapse">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= link_to new_group_member_path(@group) do %>
+          <%= icon("fas", "user-plus") %>
+          Ajouter un membre
+        <% end %>
+        <div class="card-group-members">
+          <% @group.members.each do |member| %>
+            <div class="card-group-member">
+              <%= cl_image_tag member.avatar, class: "avatar" %>
+              <p><%= member.first_name %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="book-actions">
+  <%= link_to new_group_book_path(@group), class: "btn btn-add" do %>
+    <i class="fas fa-plus fa-3x"></i>
+  <% end %>
 </div>
 
 <% if @books.any? %>

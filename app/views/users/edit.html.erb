@@ -1,0 +1,9 @@
+<div class="container">
+  <h3 class="text-center">Modifier mon profil</h3>
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :first_name, label: "Pseudo" %>
+    <%= f.input :avatar %>
+    <br>
+    <%= f.submit 'Enregistrer', class: 'btn btn-primary' %>
+  <% end %>
+</div>

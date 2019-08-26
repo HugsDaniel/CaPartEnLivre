@@ -1,0 +1,108 @@
+.wrapper {
+  display: block;
+}
+
+#sidebar {
+  min-width: 220px;
+  max-width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* top layer */
+  z-index: 9999;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  /* full screen */
+  width: 100vw;
+  height: 100vh;
+  /* transparent black */
+  background: rgba(0, 0, 0, 0.7);
+  /* middle layer, i.e. appears below the sidebar */
+  z-index: 998;
+  opacity: 0;
+  /* animate the transition */
+  transition: all 0.5s ease-in-out;
+}
+/* display .overlay when it has the .active class */
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#dismiss {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  /* top right corner of the sidebar */
+  top: 20px;
+  right: 5px;
+  color: white;
+}
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: white;
+    color: black;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      margin: 10px 0;
+    }
+}
+
+#sidebar ul.components {
+    background: white;
+    padding: 10px 0;
+
+    li {
+      margin: 10px 0;
+    }
+
+    li a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    i {
+      margin: 7px 10px;
+      color: #A9A9A9;
+    }
+
+    p {
+      margin: 5px 7px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1em;
+      font-weight: 400;
+    }
+}
