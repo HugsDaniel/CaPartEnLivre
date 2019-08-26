@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for @membership, url: group_members_path(@group) do |f| %>
+    <%= f.input :user_id, collection: User.all, label_method: :first_name, value_method: :id, input_html: { class: 'select2' } %>
+    <br>
+    <%= f.submit "Ajouter", class: 'btn btn-primary' %>
+  <% end %>
+</div>

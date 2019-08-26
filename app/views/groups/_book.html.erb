@@ -1,6 +1,6 @@
 <a class="book-details" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
   <div class="card-product card-no-margin">
-    <% if book.cover %>
+    <% unless book.image_link.blank? %>
       <%= cl_image_tag book.cover, crop: :fill, height: 120, width: 120 %>
     <% else %>
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
