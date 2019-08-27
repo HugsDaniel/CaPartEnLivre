@@ -1,0 +1,44 @@
+<a class="book-details" data-toggle="collapse" href="#movieDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="movieDetailsCollapse<%= index %>">
+  <div class="card-product">
+    <% if movie.poster_path %>
+      <%= image_tag "https://image.tmdb.org/t/p/w500/" + movie.poster_path %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= movie.title %></h2>
+    </div>
+    <div class="card-product-right">
+      <i class="far fa-heart"></i>
+      <p>0</p>
+    </div>
+  </div>
+</a>
+<div class="collapse book-description" id="movieDetailsCollapse<%= index %>">
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header card-header-white" id="headingOne" data-toggle="collapse" data-target="#movieCollapseOne<%=index%>" aria-expanded="true" aria-controls="movieCollapseOne<%=index%>">
+        <h2 class="mb-0">
+          <div class="btn">
+            <%= icon('fas', 'chevron-down') %>
+            Informations
+          </div>
+        </h2>
+      </div>
+
+      <div id="movieCollapseOne<%=index%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="card-trip-home">
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= movie.release_date[0, 4] %></h2>
+                <p><strong>Résumé</strong></p>
+                <p><%= movie.overview %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
