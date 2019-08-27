@@ -1,0 +1,14 @@
+<% content_for :action do %>
+  <%= link_to group_path(@book.group), class: "navbar-brand" do %>
+    <i class="fas fa-arrow-left fa-lg"></i>
+  <% end %>
+<% end %>
+
+<% content_for :title do %>
+  <% unless @book.image_link.blank? %>
+    <%= cl_image_tag @book.cover, crop: :fill, width: 40, height: 40, class: "avatar" %>
+  <% else %>
+    <%= image_tag "icons/apple-icon.png", class: "avatar" %>
+  <% end %>
+  <%= @book.title %>
+<% end %>

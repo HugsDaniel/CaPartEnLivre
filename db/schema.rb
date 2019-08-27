@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_160503) do
+ActiveRecord::Schema.define(version: 2019_08_27_155716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,35 @@ ActiveRecord::Schema.define(version: 2019_08_26_160503) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "platform"
+    t.string "published_at"
+    t.string "company"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["group_id"], name: "index_games_on_group_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "private", default: true
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_likes_on_book_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -56,6 +79,20 @@ ActiveRecord::Schema.define(version: 2019_08_26_160503) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.text "overview"
+    t.string "release_date"
+    t.string "original_title"
+    t.string "poster_path"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["group_id"], name: "index_movies_on_group_id"
+    t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,6 +113,12 @@ ActiveRecord::Schema.define(version: 2019_08_26_160503) do
   add_foreign_key "books", "users"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
+  add_foreign_key "games", "groups"
+  add_foreign_key "games", "users"
+  add_foreign_key "likes", "books"
+  add_foreign_key "likes", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
+  add_foreign_key "movies", "groups"
+  add_foreign_key "movies", "users"
 end

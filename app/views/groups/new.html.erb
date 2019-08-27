@@ -1,3 +1,12 @@
+<% content_for :action do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fas fa-arrow-left fa-lg"></i>
+  <% end %>
+<% end %>
+<% content_for :title do %>
+  Nouveau groupe
+<% end %>
+
 <div class="container">
   <h3 class="text-center">Nouveau groupe</h3>
   <%= simple_form_for @group do |f| %>

@@ -1,3 +1,31 @@
+.dropdown-menu {
+  background: #00BFFF;
+  border-radius: 10px;
+  height: 200px;
+}
+
+.add-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+
+  a {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 10px 10px 5px;
+  }
+
+  p {
+    margin-left: 5px;
+    margin-bottom: 0;
+  }
+}
+
 .card-group-members {
   margin-top: 15px;
 }
@@ -20,6 +48,10 @@
 
 .card-header-white {
   background: white;
+
+  h2 {
+    font-size: 16px;
+  }
 }
 
 .card-trip {
@@ -79,7 +111,7 @@
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 90px;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   display: flex;
@@ -88,25 +120,26 @@
   text-decoration: none !important;
 }
 
-.card-product div:last-child {
+.book-link {
+  display: flex;
+}
+
+.blue {
+  color: blue;
+}
+
+.book-details div:last-child {
   margin-left: auto;
   padding: 10px;
 }
 
-.card-product-infos {
-  text-decoration: none !important;
-}
-
-.card-product-right {
-  right: 0;
-  float: right;
-}
-
 .card-product img {
-  height: 100%;
-  width: 120px;
   object-fit: cover;
-  text-decoration: none !important;
+  // text-decoration: none !important;
+  margin: 10px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
 }
 
 .card-product h2 {
@@ -117,11 +150,11 @@
 }
 
 .card-product p {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
-  margin-top: 8px;
+  margin-top: 4px;
   text-decoration: none !important;
 }
 
@@ -176,4 +209,16 @@
 .card-product-group .card-product-group-infos {
   padding: 16px;
   text-decoration: none !important;
+}
+
+.card-product-right {
+  right: 0;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    margin-top: 0;
+  }
 }

@@ -1,5 +1,10 @@
+<% content_for :action do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fas fa-arrow-left fa-lg"></i>
+  <% end %>
+<% end %>
 <% content_for :title do %>
-  <a @group.name, data-toggle="collapse" href="#groupDetailsCollapse" role="button" aria-expanded="false" aria-controls="groupDetailsCollapse">
+  <a data-toggle="collapse" href="#groupDetailsCollapse" role="button" aria-expanded="false" aria-controls="groupDetailsCollapse">
     <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
     <%= @group.name %>
   </a>
@@ -26,10 +31,26 @@
   </div>
 </div>
 
-<div class="book-actions">
-  <%= link_to new_group_book_path(@group), class: "btn btn-add" do %>
-    <i class="fas fa-plus fa-3x"></i>
-  <% end %>
+<div class="book-actions dropup">
+  <a class="btn btn-add" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-plus fa-3x btn-white"></i>
+  </a>
+  <div class="dropdown-menu menu-narrow">
+    <div class="add-menu">
+      <%= link_to new_group_book_path(@group) do %>
+        <i class="fas fa-book"></i>
+        <p>Un livre</p>
+      <% end %>
+      <%= link_to "#" do %>
+        <i class="fas fa-film"></i>
+        <p>Un film</p>
+      <% end %>
+      <%= link_to "#" do %>
+        <i class="fas fa-gamepad"></i>
+        <p>Un jeu</p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <% if @books.any? %>

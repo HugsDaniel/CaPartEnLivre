@@ -1,5 +1,8 @@
 class Group < ApplicationRecord
   has_many :books
+  has_many :movies
+  has_many :games
+
   has_many :memberships, inverse_of: :group
   has_many :members, through: :memberships, source: :user
 

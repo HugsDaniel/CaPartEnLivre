@@ -1,3 +1,8 @@
+<% content_for :action do %>
+  <%= link_to group_path(@group), class: "navbar-brand" do %>
+    <i class="fas fa-arrow-left fa-lg"></i>
+  <% end %>
+<% end %>
 <% content_for :title do %>
   <%= link_to group_path(@group) do %>
     <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
