@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     @movie.remote_poster_url = @movie.poster_path
 
     if @movie.save
-      redirect_to group_path(@group), notice: "Bien ajouté !"
+      redirect_to group_path(id: @group, previous: "movie"), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end

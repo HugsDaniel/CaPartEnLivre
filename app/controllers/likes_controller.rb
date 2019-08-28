@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     @like.save
-    redirect_to group_path(@resource.group)
+    redirect_to group_path(id: @resource.group, previous: params[:type].to_s.downcase)
   end
 
   def destroy

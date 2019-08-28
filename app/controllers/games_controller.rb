@@ -14,7 +14,7 @@ class GamesController < ApplicationController
     @game.remote_background_image_url = game_params[:background_image]
 
     if @game.save
-      redirect_to group_path(@group), notice: "Bien ajouté !"
+      redirect_to group_path(id: @group, previous: "game"), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end

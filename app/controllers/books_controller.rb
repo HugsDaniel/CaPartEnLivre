@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @book.remote_cover_url = @book.image_link
 
     if @book.save
-      redirect_to group_path(@group), notice: "Bien ajouté !"
+      redirect_to group_path(id: @group, previous: "book"), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end

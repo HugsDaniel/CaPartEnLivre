@@ -14,7 +14,7 @@ class SeriesController < ApplicationController
     @series.remote_poster_url = @series.poster_path
 
     if @series.save
-      redirect_to group_path(@group), notice: "Bien ajouté !"
+      redirect_to group_path(id: @group, previous: "series"), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end
