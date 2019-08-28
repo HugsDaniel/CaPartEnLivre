@@ -7,9 +7,9 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= stylesheet_pack_tag 'application' %>
     <%= favicon_link_tag asset_path('icons/favicon.ico') %>
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
   </head>
   <body>
     <%= render 'shared/navbar' %>
