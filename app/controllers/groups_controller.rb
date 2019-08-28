@@ -1,10 +1,10 @@
 class GroupsController < ApplicationController
   def show
     @group    = Group.find(params[:id])
-    @books    = @group.books.includes(:comments, :user)
-    @movies   = @group.movies.includes(:user)
-    @series   = @group.series.includes(:user)
-    @games    = @group.games.includes(:user)
+    @books    = @group.books.order('likes_count DESC')
+    @movies   = @group.movies.order('likes_count DESC')
+    @series   = @group.series.order('likes_count DESC')
+    @games    = @group.games.order('likes_count DESC')
     @comment  = Comment.new
   end
 

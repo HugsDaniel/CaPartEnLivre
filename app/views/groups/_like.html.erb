@@ -6,6 +6,6 @@
 <% else %>
   <%= link_to likes_path(resource_id: resource.id, type: resource.class), method: :post do %>
     <i class="far fa-heart"></i>
-    <p><%= resource.likes.count %></p>
+    <p><%= resource.likes_count %></p>
   <% end %>
 <% end %>
