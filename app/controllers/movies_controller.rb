@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     if params[:search].present?
-      @movies = Imdb.search(params[:search][:query])
+      @movies = Imdb.search_movie(params[:search][:query])
     end
   end
 

@@ -1,5 +1,5 @@
 <div class="book-details">
-  <div class="card-product card-no-margin">
+  <div class="card-product">
     <a class="book-link" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
       <% unless book.image_link.blank? %>
         <%= cl_image_tag book.cover, crop: :fill, height: 68, width: 68 %>
@@ -13,16 +13,7 @@
       </div>
     </a>
     <div class="card-product-right">
-      <% if current_user.likes?(book) %>
-        <%= link_to like_path(Like.find_by(user: current_user, book: book)), method: :delete do %>
-          <i class="fas fa-heart blue"></i>
-        <% end %>
-      <% else %>
-        <%= link_to book_likes_path(book), method: :post do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-      <% end %>
-      <p><%= book.likes.count %></p>
+      <%= render 'like', resource: book %>
     </div>
   </div>
 </div>

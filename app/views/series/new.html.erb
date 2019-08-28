@@ -6,15 +6,15 @@
 <% content_for :title do %>
   <%= link_to group_path(@group) do %>
     <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
-    Recommander un livre
+    Recommander une série
   <% end %>
 <% end %>
 
 <div class="container">
   <div class="book-search">
-    <%= simple_form_for :search, url: new_group_book_path(@group), method: :get do |f| %>
+    <%= simple_form_for :search, url: new_group_series_path(@group), method: :get do |f| %>
       <div class="search-form-control form-group">
-        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Chercher un livre..." />
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Chercher une série..." />
         <button type="submit" class="btn btn-flat">
           <i class="fas fa-search"></i>
         </button>
@@ -22,10 +22,10 @@
     <% end %>
   </div>
 
-  <% if @books %>
-    <% if @books.any? %>
-      <%@books.each_with_index do |book, index| %>
-        <%= render 'book', book: book, index: index %>
+  <% if @series %>
+    <% if @series.any? %>
+      <%@series.each_with_index do |series, index| %>
+        <%= render 'series', series: series, index: index %>
       <% end %>
     <% else %>
       <p>Aucun résultat...</p>

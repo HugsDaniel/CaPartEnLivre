@@ -1,19 +1,22 @@
-<a class="book-details" data-toggle="collapse" href="#movieDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="movieDetailsCollapse<%= index %>">
+<div class="book-details">
   <div class="card-product">
-    <% if movie.poster_path %>
-      <%= cl_image_tag movie.poster, crop: :fill, height: 80 %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= movie.title %></h2>
-    </div>
-    <div class="card-product-right">
-      <i class="far fa-heart"></i>
-      <p>0</p>
-    </div>
+    <a class="book-link" data-toggle="collapse" href="#movieDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="movieDetailsCollapse<%= index %>">
+      <% if movie.poster_path %>
+        <%= cl_image_tag movie.poster, crop: :fill, height: 80 %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= movie.title %></h2>
+        <p><%= movie.release_date %></p>
+        <p><small>Recommandé par <%= movie.user.first_name.capitalize %></small></p>
+      </div>
+      <div class="card-product-right">
+        <%= render 'like', resource: movie %>
+      </div>
+    </a>
   </div>
-</a>
+</div>
 <div class="collapse book-description" id="movieDetailsCollapse<%= index %>">
   <div class="accordion" id="accordionExample">
     <div class="card">

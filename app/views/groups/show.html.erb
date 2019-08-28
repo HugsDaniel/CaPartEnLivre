@@ -31,6 +31,61 @@
   </div>
 </div>
 
+<ul class="nav nav-tabs group-navs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="book-tab" data-toggle="tab" href="#books" role="tab" aria-controls="book" aria-selected="false"><i class="fas fa-book"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="movie-tab" data-toggle="tab" href="#movies" role="tab" aria-controls="movie" aria-selected="true"><i class="fas fa-film"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="serie-tab" data-toggle="tab" href="#series" role="tab" aria-controls="serie" aria-selected="false"><i class="fas fa-tv"></i></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="game-tab" data-toggle="tab" href="#games" role="tab" aria-controls="game" aria-selected="false"><i class="fas fa-gamepad"></i></a>
+  </li>
+</ul>
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="books" role="tabpanel" aria-labelledby="book-tab">
+    <% if @books.any? %>
+      <%@books.each_with_index do |book, index| %>
+        <%= render 'book', book: book, index: index %>
+      <% end %>
+    <% else %>
+      <p>Aucun livre pour le moment... Ajoutes-en !</p>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="movies" role="tabpanel" aria-labelledby="movie-tab">
+    <% if @movies.any? %>
+      <%@movies.each_with_index do |movie, index| %>
+        <%= render 'movie', movie: movie, index: index %>
+      <% end %>
+    <% else %>
+      <p>Aucun film pour le moment... Ajoutes-en !</p>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="series" role="tabpanel" aria-labelledby="serie-tab">
+    <% if @series.any? %>
+      <%@series.each_with_index do |series, index| %>
+        <%= render 'series', series: series, index: index %>
+      <% end %>
+    <% else %>
+      <p>Aucune série pour le moment... Ajoutes-en !</p>
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="games" role="tabpanel" aria-labelledby="game-tab">
+    <% if @games.any? %>
+      <%@games.each_with_index do |game, index| %>
+        <%= render 'game', game: game, index: index %>
+      <% end %>
+    <% else %>
+      <p>Aucun jeu pour le moment... Ajoutes-en !</p>
+    <% end %>
+  </div>
+</div>
+
 <div class="book-actions dropup">
   <a class="btn btn-add" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-plus fa-3x btn-white"></i>
@@ -39,32 +94,20 @@
     <div class="add-menu">
       <%= link_to new_group_book_path(@group) do %>
         <i class="fas fa-book"></i>
-        <p>Un livre</p>
+        <p>Livre</p>
       <% end %>
       <%= link_to new_group_movie_path(@group) do %>
         <i class="fas fa-film"></i>
-        <p>Un film</p>
+        <p>Film</p>
+      <% end %>
+      <%= link_to new_group_series_path(@group) do %>
+        <i class="fas fa-tv"></i>
+        <p>Série</p>
       <% end %>
       <%= link_to new_group_game_path(@group) do %>
         <i class="fas fa-gamepad"></i>
-        <p>Un jeu</p>
+        <p>Jeu</p>
       <% end %>
     </div>
   </div>
 </div>
-
-<% if @books.any? %>
-  <%@books.each_with_index do |book, index| %>
-    <%= render 'book', book: book, index: index %>
-  <% end %>
-<% else %>
-  <p>Aucun livre pour le moment... Ajoutes-en !</p>
-<% end %>
-
-<% if @movies.any? %>
-  <%@movies.each_with_index do |movie, index| %>
-    <%= render 'movie', movie: movie, index: index %>
-  <% end %>
-<% else %>
-  <p>Aucun film pour le moment... Ajoutes-en !</p>
-<% end %>

@@ -1,0 +1,28 @@
+<a class="book-details" data-toggle="collapse" href="#seriesDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="seriesDetailsCollapse<%= index %>">
+  <div class="card-product">
+    <% if series.poster_path %>
+      <%= image_tag series.poster_path %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= series.title %></h2>
+      <p><%= series.release_date %></p>
+    </div>
+    <div class="card-product-right">
+      <%= icon('fas', 'chevron-down') %>
+    </div>
+  </div>
+</a>
+<div class="collapse book-description" id="seriesDetailsCollapse<%= index %>">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= link_to "Partager", group_series_index_path(@group, series: { title: series.title, release_date: series.release_date, overview: series.overview, poster_path: series.poster_path }), class: "btn btn-sm btn-ghost btn-share", method: :post %>
+        <h2><%= series.release_date[0, 4] if series.release_date %></h2>
+        <p><strong>Résumé</strong></p>
+        <p><%= series.overview %></p>
+      </div>
+    </div>
+  </div>
+</div>

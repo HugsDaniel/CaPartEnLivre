@@ -1,0 +1,20 @@
+.group-navs {
+  height: 50px;
+  background: #00BFFF;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nav-item {
+    width: 25%;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .nav-link.active {
+    background: white;
+    color: #2F4F4F;
+  }
+}
+

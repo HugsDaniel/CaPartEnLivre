@@ -1,7 +1,6 @@
 .dropdown-menu {
   background: #00BFFF;
   border-radius: 10px;
-  height: 200px;
 }
 
 .add-menu {
@@ -15,13 +14,17 @@
   a {
     width: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 20px;
+  }
+
+  i {
+    text-align: center;
+    width: 30px;
+    margin-right: 20px;
   }
 
   p {
-    margin-left: 5px;
     margin-bottom: 0;
   }
 }
@@ -218,5 +221,11 @@
 
   p {
     margin-top: 0;
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

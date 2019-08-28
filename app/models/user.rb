@@ -8,7 +8,10 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :groups, through: :memberships
   has_many :likes
-  has_many :liked_books, through: :likes, source: :book
+  has_many :liked_books, through: :likes, source: :likable, source_type: "Book"
+  has_many :liked_movies, through: :likes, source: :likable, source_type: "Movie"
+  has_many :liked_series, through: :likes, source: :likable, source_type: "Series"
+  has_many :liked_games, through: :likes, source: :likable, source_type: "Game"
 
   validates :first_name, presence: true
 
@@ -18,7 +21,15 @@ class User < ApplicationRecord
     Membership.create(user: self, group: group)
   end
 
-  def likes?(book)
-    liked_books.include?(book)
+  def likes?(resource)
+    if resource.class == Book
+      liked_books.include?(resource)
+    elsif resource.class == Movie
+      liked_movies.include?(resource)
+    elsif resource.class == Game
+      liked_games.include?(resource)
+    elsif resource.class == Series
+      liked_series.include?(resource)
+    end
   end
 end

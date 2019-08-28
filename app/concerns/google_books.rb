@@ -1,5 +1,3 @@
-require 'open-uri'
-
 module GoogleBooks
   class Item
     attr_reader :title, :description, :authors, :published_date, :image_link

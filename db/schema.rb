@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_093242) do
+ActiveRecord::Schema.define(version: 2019_08_28_135413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 2019_08_28_093242) do
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "platform"
-    t.string "published_at"
-    t.string "company"
+    t.string "platforms"
+    t.string "released"
+    t.string "devs"
     t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "background_image"
     t.index ["group_id"], name: "index_games_on_group_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
@@ -65,10 +66,11 @@ ActiveRecord::Schema.define(version: 2019_08_28_093242) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_likes_on_book_id"
+    t.string "likable_type"
+    t.bigint "likable_id"
+    t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -96,6 +98,20 @@ ActiveRecord::Schema.define(version: 2019_08_28_093242) do
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
+  create_table "series", force: :cascade do |t|
+    t.string "title"
+    t.text "overview"
+    t.string "release_date"
+    t.string "poster_path"
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "poster"
+    t.index ["group_id"], name: "index_series_on_group_id"
+    t.index ["user_id"], name: "index_series_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,10 +132,11 @@ ActiveRecord::Schema.define(version: 2019_08_28_093242) do
   add_foreign_key "comments", "users"
   add_foreign_key "games", "groups"
   add_foreign_key "games", "users"
-  add_foreign_key "likes", "books"
   add_foreign_key "likes", "users"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
   add_foreign_key "movies", "groups"
   add_foreign_key "movies", "users"
+  add_foreign_key "series", "groups"
+  add_foreign_key "series", "users"
 end

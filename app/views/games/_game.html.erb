@@ -1,0 +1,30 @@
+<a class="book-details" data-toggle="collapse" href="#gameDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="gameDetailsCollapse<%= index %>">
+  <div class="card-product">
+    <% if game.background_image %>
+      <%= image_tag game.background_image %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= game.name %></h2>
+      <p><%= game.released %></p>
+    </div>
+    <div class="card-product-right">
+      <%= icon('fas', 'chevron-down') %>
+    </div>
+  </div>
+</a>
+<div class="collapse book-description" id="gameDetailsCollapse<%= index %>">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= link_to "Partager", group_games_path(@group, game: { name: game.name, platforms: game.platforms, released: game.released, background_image: game.background_image, description: game.description, devs: game.devs }), class: "btn btn-sm btn-ghost btn-share", method: :post %>
+        <h2><%= game.devs %></h2>
+        <p>Platforms : <%= game.platforms %></p>
+        <br>
+        <h2>Description</h2>
+        <p><%= game.description.html_safe %></p>
+      </div>
+    </div>
+  </div>
+</div>

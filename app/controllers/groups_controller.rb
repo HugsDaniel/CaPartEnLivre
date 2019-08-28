@@ -1,9 +1,11 @@
 class GroupsController < ApplicationController
   def show
-    @group = Group.find(params[:id])
-    @books = @group.books.includes(:comments, :user)
-    @movies = @group.movies.includes(:user)
-    @comment = Comment.new
+    @group    = Group.find(params[:id])
+    @books    = @group.books.includes(:comments, :user)
+    @movies   = @group.movies.includes(:user)
+    @series   = @group.series.includes(:user)
+    @games    = @group.games.includes(:user)
+    @comment  = Comment.new
   end
 
   def new

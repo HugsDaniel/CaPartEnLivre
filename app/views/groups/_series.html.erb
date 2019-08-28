@@ -1,0 +1,47 @@
+<div class="book-details">
+  <div class="card-product">
+    <a class="book-link" data-toggle="collapse" href="#seriesDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="seriesDetailsCollapse<%= index %>">
+      <% if series.poster_path %>
+        <%= cl_image_tag series.poster, crop: :fill, height: 80 %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= series.title %></h2>
+        <p><%= series.release_date %></p>
+        <p><small>Recommandé par <%= series.user.first_name.capitalize %></small></p>
+      </div>
+      <div class="card-product-right">
+        <%= render 'like', resource: series %>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="collapse book-description" id="seriesDetailsCollapse<%= index %>">
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header card-header-white" id="headingOne" data-toggle="collapse" data-target="#seriesCollapseOne<%=index%>" aria-expanded="true" aria-controls="seriesCollapseOne<%=index%>">
+        <h2 class="mb-0">
+          <div class="btn">
+            <%= icon('fas', 'chevron-down') %>
+            Informations
+          </div>
+        </h2>
+      </div>
+
+      <div id="seriesCollapseOne<%=index%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="card-trip-home">
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= series.release_date[0, 4] %></h2>
+                <p><strong>Résumé</strong></p>
+                <p><%= series.overview %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
