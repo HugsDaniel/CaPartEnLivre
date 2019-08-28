@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
     @movie.user = current_user
     @movie.group = @group
-    # @movie.remote_cover_url = @movie.image_link
+    @movie.remote_poster_url = @movie.poster_path
 
     if @movie.save
       redirect_to group_path(@group), notice: "Bien ajouté !"

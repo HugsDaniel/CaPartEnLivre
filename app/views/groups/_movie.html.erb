@@ -1,7 +1,7 @@
 <a class="book-details" data-toggle="collapse" href="#movieDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="movieDetailsCollapse<%= index %>">
   <div class="card-product">
     <% if movie.poster_path %>
-      <%= image_tag "https://image.tmdb.org/t/p/w500/" + movie.poster_path %>
+      <%= cl_image_tag movie.poster, crop: :fill, height: 80 %>
     <% else %>
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
     <% end %>

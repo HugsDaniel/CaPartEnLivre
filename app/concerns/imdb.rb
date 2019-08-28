@@ -9,7 +9,7 @@ module Imdb
       @overview         = attributes[:overview]
       @original_title   = attributes[:original_title]
       @release_date     = attributes[:release_date]
-      @poster_path      = attributes[:poster_path]
+      @poster_path      = "https://image.tmdb.org/t/p/w500#{attributes[:poster_path]}"
     end
   end
 
