@@ -18,29 +18,12 @@
   </div>
 </div>
 <div class="collapse book-description" id="seriesDetailsCollapse<%= index %>">
-  <div class="accordion" id="accordionExample">
-    <div class="card">
-      <div class="card-header card-header-white" id="headingOne" data-toggle="collapse" data-target="#seriesCollapseOne<%=index%>" aria-expanded="true" aria-controls="seriesCollapseOne<%=index%>">
-        <h2 class="mb-0">
-          <div class="btn">
-            <%= icon('fas', 'chevron-down') %>
-            Informations
-          </div>
-        </h2>
-      </div>
-
-      <div id="seriesCollapseOne<%=index%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          <div class="card-trip-home">
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= series.release_date[0, 4] %></h2>
-                <p><strong>Résumé</strong></p>
-                <p><%= series.overview %></p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= series.release_date[0, 4] %></h2>
+        <p><strong>Résumé</strong></p>
+        <p><%= series.overview %></p>
       </div>
     </div>
   </div>

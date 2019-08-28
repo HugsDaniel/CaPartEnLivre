@@ -19,55 +19,14 @@
 </div>
 
 <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
-  <div class="accordion" id="accordionExample">
-    <div class="card">
-      <div class="card-header card-header-white" id="headingOne" data-toggle="collapse" data-target="#bookCollapseOne<%=index%>" aria-expanded="true" aria-controls="bookCollapseOne<%=index%>">
-        <h2 class="mb-0">
-          <div class="btn">
-            <%= icon('fas', 'chevron-down') %>
-            Informations
-          </div>
-        </h2>
-      </div>
-
-      <div id="bookCollapseOne<%=index%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body">
-          <div class="card-trip-home">
-            <div class="card-trip-infos">
-              <div>
-                <h2><%= book.published_date[0, 4] %></h2>
-                <p><strong>Résumé</strong></p>
-                <p><%= book.description %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header card-header-white" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo<%=index%>" aria-expanded="false" aria-controls="collapseTwo<%=index%>">
-        <h2 class="mb-0">
-          <div class="btn">
-            <%= icon('fas', 'chevron-down') %>
-            Commentaires ( <%= book.comments.count %> )
-          </div>
-        </h2>
-      </div>
-      <div id="collapseTwo<%=index%>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-        <div class="card-body">
-          <%= render 'comments/form', book: book, comment: @comment %>
-
-          <div id="comments">
-            <% if book.comments.any? %>
-              <% book.comments.order('created_at DESC').each do |comment| %>
-                <%= render 'comments/show', comment: comment %>
-              <% end %>
-            <% else %>
-              <p>Pas de commentaires</p>
-            <% end %>
-          </div>
-        </div>
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= book.published_date[0, 4] %></h2>
+        <p><strong>Résumé</strong></p>
+        <p><%= book.description %></p>
       </div>
     </div>
   </div>
 </div>
+
