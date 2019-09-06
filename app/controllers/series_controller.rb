@@ -2,8 +2,9 @@ class SeriesController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
     if params[:search].present?
-      @series = Imdb.search_series(params[:search][:query])
+      @all_series = Imdb.search_series(params[:search][:query])
     end
+    @series = Series.new
   end
 
   def create
@@ -23,6 +24,6 @@ class SeriesController < ApplicationController
   private
 
   def series_params
-    params.require(:series).permit(:title, :overview, :release_date, :poster_path)
+    params.require(:series).permit(:owner_comment, :title, :overview, :release_date, :poster_path)
   end
 end

@@ -6,6 +6,7 @@ class BooksController < ApplicationController
     if params[:search].present?
       @books = GoogleBooks.search(params[:search][:query])
     end
+    @book = Book.new
   end
 
   def create
@@ -29,6 +30,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :authors, :published_date, :description, :image_link)
+    params.require(:book).permit(:title, :authors, :published_date, :description, :image_link, :owner_comment)
   end
 end

@@ -21,6 +21,14 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
+        <% if series.owner_comment.present? %>
+          <div>
+            <p><strong><%= series.user.first_name %> dit :</strong></p>
+            <p><%= series.owner_comment %></p>
+          </div>
+          <br>
+        <% end %>
+
         <h2><%= series.release_date[0, 4] %></h2>
         <p><strong>Résumé</strong></p>
         <p><%= series.overview %></p>

@@ -4,6 +4,7 @@ class GamesController < ApplicationController
     if params[:search].present?
       @games = Igdb.search(params[:search][:query])
     end
+    @game = Game.new
   end
 
   def create
@@ -23,6 +24,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:name, :released, :platforms, :background_image, :description, :devs)
+    params.require(:game).permit(:owner_comment, :name, :released, :platforms, :background_image, :description, :devs)
   end
 end

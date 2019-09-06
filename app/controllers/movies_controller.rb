@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
     if params[:search].present?
       @movies = Imdb.search_movie(params[:search][:query])
     end
+    @movie = Movie.new
   end
 
   def create
@@ -23,6 +24,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :overview, :original_title, :release_date, :poster_path)
+    params.require(:movie).permit(:owner_comment, :title, :overview, :original_title, :release_date, :poster_path)
   end
 end

@@ -18,7 +18,8 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <%= link_to "Partager", group_games_path(@group, game: { name: game.name, platforms: game.platforms, released: game.released, background_image: game.background_image, description: game.description, devs: game.devs }), class: "btn btn-sm btn-ghost btn-share", method: :post %>
+        <%= render 'share', game: game, index: index %>
+
         <h2><%= game.devs %></h2>
         <p>Platforms : <%= game.platforms %></p>
         <br>

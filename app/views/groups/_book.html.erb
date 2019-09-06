@@ -22,7 +22,14 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <h2><%= book.published_date[0, 4] %></h2>
+        <% if book.owner_comment.present? %>
+          <div>
+            <p><strong><%= book.user.first_name %> dit :</strong></p>
+            <p><%= book.owner_comment %></p>
+          </div>
+          <br>
+        <% end %>
+        <h2><%= book.published_date[0, 4] if book.published_date %></h2>
         <p><strong>Résumé</strong></p>
         <p><%= book.description %></p>
       </div>

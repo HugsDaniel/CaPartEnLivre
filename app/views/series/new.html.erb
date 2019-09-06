@@ -22,9 +22,9 @@
     <% end %>
   </div>
 
-  <% if @series %>
-    <% if @series.any? %>
-      <%@series.each_with_index do |series, index| %>
+  <% if @all_series %>
+    <% if @all_series.any? %>
+      <%@all_series.each_with_index do |series, index| %>
         <%= render 'series', series: series, index: index %>
       <% end %>
     <% else %>

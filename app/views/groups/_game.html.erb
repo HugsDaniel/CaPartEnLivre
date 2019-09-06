@@ -24,6 +24,13 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
+        <% if game.owner_comment.present? %>
+          <div>
+            <p><strong><%= game.user.first_name %> dit :</strong></p>
+            <p><%= game.owner_comment %></p>
+          </div>
+          <br>
+        <% end %>
         <h2><%= game.devs %></h2>
         <p>Platforms : <%= game.platforms %></p>
         <br>

@@ -18,7 +18,8 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <%= link_to "Partager", group_movies_path(@group, movie: { title: movie.title, release_date: movie.release_date, overview: movie.overview, poster_path: movie.poster_path }), class: "btn btn-sm btn-ghost btn-share", method: :post %>
+        <%= render 'share', movie: movie, index: index %>
+
         <h2><%= movie.release_date[0, 4] if movie.release_date %></h2>
         <p><strong>Résumé</strong></p>
         <p><%= movie.overview %></p>
