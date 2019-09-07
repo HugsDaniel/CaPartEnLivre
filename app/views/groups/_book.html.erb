@@ -22,9 +22,10 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <% if book.owner_comment.present? %>
+        <% if book.owner_comment.present? || book.owner_grade.present? %>
           <div>
             <p><strong><%= book.user.first_name %> dit :</strong></p>
+            <p><%= book.owner_grade || "-" %>/5</p>
             <p><%= book.owner_comment %></p>
           </div>
           <br>

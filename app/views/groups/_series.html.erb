@@ -21,9 +21,10 @@
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <% if series.owner_comment.present? %>
+        <% if series.owner_comment.present? || series.owner_grade.present? %>
           <div>
             <p><strong><%= series.user.first_name %> dit :</strong></p>
+            <p><%= series.owner_grade || "-" %>/5 </p>
             <p><%= series.owner_comment %></p>
           </div>
           <br>

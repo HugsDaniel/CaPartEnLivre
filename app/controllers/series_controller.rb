@@ -24,6 +24,6 @@ class SeriesController < ApplicationController
   private
 
   def series_params
-    params.require(:series).permit(:owner_comment, :title, :overview, :release_date, :poster_path)
+    params.require(:series).permit(:owner_grade, :owner_comment, :title, :overview, :release_date, :poster_path)
   end
 end

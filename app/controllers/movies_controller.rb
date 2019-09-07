@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:tmdb_id, :owner_comment, :title, :overview, :original_title, :release_date, :poster_path, :genres)
+    params.require(:movie).permit(:owner_grade, :tmdb_id, :owner_comment, :title, :overview, :original_title, :release_date, :poster_path, :genres)
   end
 
   def get_imdb_url(tmdb_id)

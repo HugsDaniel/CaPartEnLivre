@@ -8,13 +8,14 @@
     <div class="modal-content">
       <%= simple_form_for [@group, @movie] do |f| %>
         <div class="modal-header">
-          <h5 class="modal-title" id="resourceModalLabel<%=index%>">Un petit commentaire ?</h5>
+          <h5 class="modal-title" id="resourceModalLabel<%=index%>">Donne ton avis gros</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= f.input :owner_comment, label: false %>
+          <%= f.input :owner_comment, label: "Un petit commentaire ?" %>
+          <%= f.input :owner_grade, collection: (0..5).to_a, label: "Une petite note ?" %>
           <%= f.input :title, as: :hidden, input_html: { value: movie.title } %>
           <%= f.input :release_date, as: :hidden, input_html: { value: movie.release_date } %>
           <%= f.input :overview, as: :hidden, input_html: { value: movie.overview } %>
