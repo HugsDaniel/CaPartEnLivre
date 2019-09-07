@@ -1,6 +1,6 @@
 module Imdb
   class Item
-    attr_reader :title, :name, :overview, :original_title, :release_date, :poster_path, :genres
+    attr_reader :title, :name, :overview, :original_title, :release_date, :poster_path, :genres, :tmdb_id
 
     def initialize(attributes = {})
       @title            = attributes[:title]
@@ -9,6 +9,7 @@ module Imdb
       @release_date     = attributes[:release_date]
       @poster_path      = "https://image.tmdb.org/t/p/w500#{attributes[:poster_path]}"
       @genres           = Genre.where(tmdb_id: attributes[:genres])&.map(&:name)&.join(', ')
+      @tmdb_id          = attributes[:tmdb_id].to_i
     end
   end
 
@@ -22,7 +23,8 @@ module Imdb
         original_title:   item['original_title'],
         release_date:     item['release_date']&.[](0..3),
         poster_path:      item['poster_path'],
-        genres:           item['genre_ids']
+        genres:           item['genre_ids'],
+        tmdb_id:          item['id']
       )
     end
   end

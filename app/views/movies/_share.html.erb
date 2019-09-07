@@ -20,6 +20,7 @@
           <%= f.input :overview, as: :hidden, input_html: { value: movie.overview } %>
           <%= f.input :poster_path, as: :hidden, input_html: { value: movie.poster_path } %>
           <%= f.input :genres, as: :hidden, input_html: { value: movie.genres } %>
+          <%= f.input :tmdb_id, as: :hidden, input_html: { value: movie.tmdb_id } %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>
