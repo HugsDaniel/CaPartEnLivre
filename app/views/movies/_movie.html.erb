@@ -20,7 +20,9 @@
       <div>
         <%= render 'share', movie: movie, index: index %>
 
-        <h2><%= movie.release_date[0, 4] if movie.release_date %></h2>
+        <p><strong>Sortie :</strong> <%= movie.release_date[0, 4] if movie.release_date %></p>
+        <p><strong>Genre :</strong> <%= movie.genres %></p>
+        <br>
         <p><strong>Résumé</strong></p>
         <p><%= movie.overview %></p>
       </div>

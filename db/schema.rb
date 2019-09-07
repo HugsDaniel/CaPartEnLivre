@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_214132) do
+ActiveRecord::Schema.define(version: 2019_09_07_213841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_09_06_214132) do
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.integer "tmdb_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -100,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_09_06_214132) do
     t.string "poster"
     t.integer "likes_count", default: 0
     t.string "owner_comment"
+    t.string "genres"
     t.index ["group_id"], name: "index_movies_on_group_id"
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
