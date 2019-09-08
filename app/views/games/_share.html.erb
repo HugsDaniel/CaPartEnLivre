@@ -14,7 +14,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= f.input :owner_comment, label: "Un petit commentaire ?" %>
+          <%= f.input :owner_comment, label: "Un petit commentaire ?", input_html: { class: "owner_comment_input" } %>
           <%= f.input :owner_grade, collection: (0..5).to_a, label: "Une petite note ?" %>
           <%= f.input :name, as: :hidden, input_html: { value: game.name } %>
           <%= f.input :platforms, as: :hidden, input_html: { value: game.platforms } %>

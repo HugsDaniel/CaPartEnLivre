@@ -14,7 +14,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= f.input :owner_comment, label: "Un petit commentaire ?" %>
+          <%= f.input :owner_comment, label: "Un petit commentaire ?", input_html: { class: "owner_comment_input" } %>
           <%= f.input :owner_grade, collection: (0..5).to_a, label: "Une petite note ?" %>
           <%= f.input :title, as: :hidden, input_html: { value: movie.title } %>
           <%= f.input :release_date, as: :hidden, input_html: { value: movie.release_date } %>
