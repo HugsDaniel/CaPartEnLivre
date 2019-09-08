@@ -30,8 +30,6 @@ class GamesController < ApplicationController
     permitted_params[:devs] = permitted_params[:devs].split(" ")
     permitted_params[:platforms] = permitted_params[:platforms].split(" ")
 
-    binding.pry
-
     return permitted_params
   end
 end
