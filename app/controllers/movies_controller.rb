@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
+  before_action :set_group
+
   def new
-    @group = Group.find(params[:group_id])
     if params[:search].present?
       @movies = Imdb.search_movie(params[:search][:query])
     end
@@ -8,8 +9,8 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @group = Group.find(params[:group_id])
     @movie = Movie.new(movie_params)
+
     @movie.imdb_url = get_imdb_url(movie_params[:tmdb_id])
     @movie.user = current_user
     @movie.group = @group
@@ -24,8 +25,14 @@ class MoviesController < ApplicationController
 
   private
 
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
   def movie_params
-    params.require(:movie).permit(:owner_grade, :tmdb_id, :owner_comment, :title, :overview, :original_title, :release_date, :poster_path, :genres)
+    permitted_params = params.require(:movie).permit(:owner_grade, :tmdb_id, :owner_comment, :title, :overview, :original_title, :release_date, :poster_path, :genres)
+    permitted_params[:genres] = permitted_params[:genres].split(" ")
+    return permitted_params
   end
 
   def get_imdb_url(tmdb_id)

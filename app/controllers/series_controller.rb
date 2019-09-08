@@ -1,6 +1,7 @@
 class SeriesController < ApplicationController
+  before_action :set_group
+
   def new
-    @group = Group.find(params[:group_id])
     if params[:search].present?
       @all_series = Imdb.search_series(params[:search][:query])
     end
@@ -8,8 +9,8 @@ class SeriesController < ApplicationController
   end
 
   def create
-    @group = Group.find(params[:group_id])
     @series = Series.new(series_params)
+
     @series.user = current_user
     @series.group = @group
     @series.remote_poster_url = @series.poster_path
@@ -23,7 +24,13 @@ class SeriesController < ApplicationController
 
   private
 
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
   def series_params
-    params.require(:series).permit(:owner_grade, :owner_comment, :title, :overview, :release_date, :poster_path)
+    permitted_params = params.require(:series).permit(:genres, :owner_grade, :owner_comment, :title, :overview, :release_date, :poster_path)
+    permitted_params[:genres] = permitted_params[:genres].split(" ")
+    return permitted_params
   end
 end

@@ -1,6 +1,6 @@
 module Igdb
   class Item
-    attr_reader :name, :released, :platforms, :background_image, :description, :devs
+    attr_reader :name, :released, :platforms, :background_image, :description, :devs, :genres
 
     def initialize(attributes = {})
       @name             = attributes[:name]
@@ -9,6 +9,7 @@ module Igdb
       @background_image = attributes[:background_image]
       @description      = attributes[:description]
       @devs             = attributes[:devs]
+      @genres           = attributes[:genres]
     end
   end
 
@@ -20,11 +21,12 @@ module Igdb
 
       Item.new(
         name:             item['name'],
-        released:          item['released']&.[](0..3),
-        platforms:        item['platforms']&.map { |p| p['platform']['name'] }&.join(", "),
+        released:         item['released']&.[](0..3),
+        platforms:        item['platforms']&.map { |p| p['platform']['name'] },
+        genres:           item['genres']&.map { |p| p['name'] },
         background_image: item['background_image'],
         description:      details['description'],
-        devs:             details['developers']&.map { |p| p['name'] }&.join(", ")
+        devs:             details['developers']&.map { |p| p['name'] }
       )
     end
   end

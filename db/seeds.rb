@@ -5,12 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-response = JSON.parse(open(URI.escape("https://api.themoviedb.org/3/genre/movie/list?api_key=#{ENV['TMDB_API_KEY']}&language=fr-FR")).read)
+puts "Cleaning DB..."
+Genre.destroy_all
 
-genres = response['genres']
+puts "Seeding genre..."
+movie_response = JSON.parse(open(URI.escape("https://api.themoviedb.org/3/genre/movie/list?api_key=#{ENV['TMDB_API_KEY']}&language=fr-FR")).read)
+series_response = JSON.parse(open(URI.escape("https://api.themoviedb.org/3/genre/tv/list?api_key=#{ENV['TMDB_API_KEY']}&language=fr-FR")).read)
+
+genres = (movie_response['genres'] + series_response['genres']).uniq
 genres.each do |genre|
   Genre.create!(
     tmdb_id: genre['id'],
     name: genre['name']
   )
 end
+
+puts "Done"

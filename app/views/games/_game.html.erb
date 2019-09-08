@@ -20,8 +20,9 @@
       <div>
         <%= render 'share', game: game, index: index %>
 
-        <h2><%= game.devs %></h2>
-        <p>Platforms : <%= game.platforms %></p>
+        <p><strong>Devs :</strong> <%= game.devs.join(", ") %></p>
+        <p><strong>Plateformes :</strong> <%= game.platforms.join(", ") %></p>
+        <p><strong>Genres :</strong> <%= game.genres.join(", ") %></p>
         <br>
         <h2>Description</h2>
         <p><%= game.description.html_safe %></p>

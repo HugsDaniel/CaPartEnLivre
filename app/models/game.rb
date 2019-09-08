@@ -4,5 +4,9 @@ class Game < ApplicationRecord
 
   has_many :likes, as: :likable
 
+  serialize :genres, Array
+  serialize :devs, Array
+  serialize :platforms, Array
+
   mount_uploader :background_image, BackgroundImageUploader
 end

@@ -20,7 +20,8 @@ module GoogleBooks
         description:    item['volumeInfo']['description'],
         authors:        item['volumeInfo']['authors']&.join(', '),
         published_date: item['volumeInfo']['publishedDate']&.[](0..3),
-        image_link:     item['volumeInfo']['imageLinks']&.[]('thumbnail')
+        image_link:     item['volumeInfo']['imageLinks']&.[]('thumbnail'),
+        categories:     item['volumeInfo']['categories']
       )
     end
   end

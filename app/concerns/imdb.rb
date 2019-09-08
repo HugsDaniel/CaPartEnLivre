@@ -8,7 +8,7 @@ module Imdb
       @original_title   = attributes[:original_title]
       @release_date     = attributes[:release_date]
       @poster_path      = "https://image.tmdb.org/t/p/w500#{attributes[:poster_path]}"
-      @genres           = Genre.where(tmdb_id: attributes[:genres])&.map(&:name)&.join(', ')
+      @genres           = Genre.where(tmdb_id: attributes[:genres])&.map(&:name)
       @tmdb_id          = attributes[:tmdb_id].to_i
     end
   end
@@ -23,8 +23,7 @@ module Imdb
         original_title:   item['original_title'],
         release_date:     item['release_date']&.[](0..3),
         poster_path:      item['poster_path'],
-        genres:           item['genre_ids'],
-        tmdb_id:          item['id']
+        genres:           item['genre_ids']
       )
     end
   end
@@ -37,7 +36,9 @@ module Imdb
         title:            item['name'],
         overview:         item['overview'],
         release_date:     item['first_air_date']&.[](0..3),
-        poster_path:      item['poster_path']
+        poster_path:      item['poster_path'],
+        genres:           item['genre_ids'],
+        tmdb_id:          item['id']
       )
     end
   end

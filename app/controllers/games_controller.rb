@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @game = Game.new(game_params)
+
     @game.user = current_user
     @game.group = @group
     @game.remote_background_image_url = game_params[:background_image]
@@ -24,6 +25,13 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:owner_grade, :owner_comment, :name, :released, :platforms, :background_image, :description, :devs)
+    permitted_params = params.require(:game).permit(:genres, :owner_grade, :owner_comment, :name, :released, :platforms, :background_image, :description, :devs)
+    permitted_params[:genres] = permitted_params[:genres].split(" ")
+    permitted_params[:devs] = permitted_params[:devs].split(" ")
+    permitted_params[:platforms] = permitted_params[:platforms].split(" ")
+
+    binding.pry
+
+    return permitted_params
   end
 end
