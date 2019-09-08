@@ -21,6 +21,7 @@
           <%= f.input :published_date, as: :hidden, input_html: { value: book.published_date } %>
           <%= f.input :description, as: :hidden, input_html: { value: book.description } %>
           <%= f.input :image_link, as: :hidden, input_html: { value: book.image_link } %>
+          <%= f.input :genres, as: :hidden, input_html: { value: book.genres } %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Annuler</button>

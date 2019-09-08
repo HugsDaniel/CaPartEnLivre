@@ -1,6 +1,6 @@
 module GoogleBooks
   class Item
-    attr_reader :title, :description, :authors, :published_date, :image_link
+    attr_reader :title, :description, :authors, :published_date, :image_link, :genres
 
     def initialize(attributes = {})
       @title          = attributes[:title]
@@ -8,6 +8,7 @@ module GoogleBooks
       @authors        = attributes[:authors]
       @published_date = attributes[:published_date]
       @image_link     = attributes[:image_link]
+      @genres         = attributes[:genres]
     end
   end
 
@@ -21,7 +22,7 @@ module GoogleBooks
         authors:        item['volumeInfo']['authors']&.join(', '),
         published_date: item['volumeInfo']['publishedDate']&.[](0..3),
         image_link:     item['volumeInfo']['imageLinks']&.[]('thumbnail'),
-        categories:     item['volumeInfo']['categories']
+        genres:         item['volumeInfo']['categories']
       )
     end
   end

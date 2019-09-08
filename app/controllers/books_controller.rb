@@ -1,8 +1,7 @@
-require 'open-uri'
-
 class BooksController < ApplicationController
+  before_action :set_group, only: [:new, :create]
+
   def new
-    @group = Group.find(params[:group_id])
     if params[:search].present?
       @books = GoogleBooks.search(params[:search][:query])
     end
@@ -10,7 +9,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    @group = Group.find(params[:group_id])
     @book = Book.new(book_params)
     @book.user = current_user
     @book.group = @group
@@ -29,7 +27,14 @@ class BooksController < ApplicationController
 
   private
 
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
   def book_params
-    params.require(:book).permit(:owner_grade, :title, :authors, :published_date, :description, :image_link, :owner_comment)
+    permitted_params = params.require(:book).permit(:genres, :owner_grade, :title, :authors, :published_date, :description, :image_link, :owner_comment)
+    permitted_params[:genres] = permitted_params[:genres].split(" ")
+
+    return permitted_params
   end
 end

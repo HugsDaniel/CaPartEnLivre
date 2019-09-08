@@ -20,6 +20,7 @@
     <div class="card-trip-infos">
       <div>
         <h2><%= book.published_date[0, 4] if book.published_date %></h2>
+        <p><strong>Genres :</strong> <%= book.genres&.join(", ") %></p>
         <p><strong>Résumé</strong></p>
         <p><%= book.description %></p>
       </div>
