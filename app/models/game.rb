@@ -8,5 +8,8 @@ class Game < ApplicationRecord
   serialize :devs, Array
   serialize :platforms, Array
 
+  GENRES = Game.all.map(&:genres).flatten.uniq.prepend("")
+  scope :filtered, -> (genre) { where("genres ILIKE ?", "%#{genre}%") }
+
   mount_uploader :background_image, BackgroundImageUploader
 end

@@ -50,6 +50,12 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade <%= 'show active' if params[:previous] == 'book' || params[:previous].nil? %>" id="books" role="tabpanel" aria-labelledby="book-tab">
     <% if @books.any? %>
+      <%= form_tag "/groups/#{@group.id}", method: :get do %>
+        <div class="filter-input">
+          Filtrer par genre : <%= select_tag :book_genre, options_for_select(Book::GENRES, params[:book_genre]), :onchange => "this.form.submit();" %>
+        </div>
+        <%= hidden_field_tag :previous, "book" %>
+      <% end %>
       <%@books.each_with_index do |book, index| %>
         <%= render 'book', book: book, index: index %>
       <% end %>
@@ -59,6 +65,10 @@
   </div>
   <div class="tab-pane fade <%= 'show active' if params[:previous] == 'movie' %>" id="movies" role="tabpanel" aria-labelledby="movie-tab">
     <% if @movies.any? %>
+      <%= form_tag "/groups/#{@group.id}", method: :get do %>
+        Filtrer par genre : <%= select_tag :movie_genre, options_for_select(Movie::GENRES, params[:movie_genre]), :onchange => "this.form.submit();" %>
+        <%= hidden_field_tag :previous, "movie" %>
+      <% end %>
       <%@movies.each_with_index do |movie, index| %>
         <%= render 'movie', movie: movie, index: index %>
       <% end %>
@@ -68,6 +78,10 @@
   </div>
   <div class="tab-pane fade <%= 'show active' if params[:previous] == 'series' %>" id="series" role="tabpanel" aria-labelledby="serie-tab">
     <% if @series.any? %>
+      <%= form_tag "/groups/#{@group.id}", method: :get do %>
+        Filtrer par genre : <%= select_tag :series_genre, options_for_select(Series::GENRES, params[:series_genre]), :onchange => "this.form.submit();" %>
+        <%= hidden_field_tag :previous, "series" %>
+      <% end %>
       <%@series.each_with_index do |series, index| %>
         <%= render 'series', series: series, index: index %>
       <% end %>
@@ -77,6 +91,10 @@
   </div>
   <div class="tab-pane fade <%= 'show active' if params[:previous] == 'game' %>" id="games" role="tabpanel" aria-labelledby="game-tab">
     <% if @games.any? %>
+      <%= form_tag "/groups/#{@group.id}", method: :get do %>
+        Filtrer par genre : <%= select_tag :game_genre, options_for_select(Game::GENRES, params[:game_genre]), :onchange => "this.form.submit();" %>
+        <%= hidden_field_tag :previous, "game" %>
+      <% end %>
       <%@games.each_with_index do |game, index| %>
         <%= render 'game', game: game, index: index %>
       <% end %>
