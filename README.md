@@ -108,3 +108,22 @@ Puis :
 Ensuite dans le navigateur, va sur `localhost:3000` et tu devrais arriver sur le login !
 
 Une fois ton compte créé tu peux créer un groupe depuis la sidebar, et t'es bon.
+
+
+## CSS
+
+Tous les fichiers .scss sont sous `app/assets/stylesheets`. Tout ce qui est dans ces fichiers est accessible dans tous les fichiers HTML du projet.
+
+## HTML
+
+Les vues sont sous `app/views`.
+
+## JS
+
+C'est un peu spécial dans Rails, on utilise Webpack. Grosso modo tout le JS est dans `app/javascript`.
+
+Si tu veux tester du JS, mets le dans `app/javascript/packs/application.js`, il sera effectif sur toutes les pages.
+
+
+
+Je te ferai un topo front dans Rails un de ces 4, juste pr que tu saches où mettre quoi et comment !
