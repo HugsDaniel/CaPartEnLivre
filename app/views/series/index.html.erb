@@ -1,0 +1,19 @@
+<% content_for :add do %>
+  <%= link_to new_group_series_path(@group), class: "navbar-brand" do %>
+    <i class="fas fa-plus fa-lg btn-white"></i>
+  <% end %>
+<% end %>
+
+<%= render 'shared/tabs' %>
+
+<% if @series.any? %>
+  <%= form_tag "/groups/#{@group.id}/series", method: :get do %>
+    Filtrer par genre : <%= select_tag :series_genre, options_for_select(Series::GENRES, params[:series_genre]), :onchange => "this.form.submit();" %>
+    <%= hidden_field_tag :previous, "series" %>
+  <% end %>
+  <%@series.each_with_index do |series, index| %>
+    <%= render 'series', series: series, index: index %>
+  <% end %>
+<% else %>
+  <p>Aucune série pour le moment... Ajoutes-en !</p>
+<% end %>

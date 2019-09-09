@@ -1,0 +1,31 @@
+<a class="book-details" data-toggle="collapse" href="#movieDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="movieDetailsCollapse<%= index %>">
+  <div class="card-product">
+    <% unless movie.poster_path.blank? %>
+      <%= image_tag movie.poster_path %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= movie.title %></h2>
+      <p><%= movie.release_date %></p>
+    </div>
+    <div class="card-product-right">
+      <%= icon('fas', 'chevron-down') %>
+    </div>
+  </div>
+</a>
+<div class="collapse book-description" id="movieDetailsCollapse<%= index %>">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= render 'share', movie: movie, index: index %>
+
+        <p><strong>Sortie :</strong> <%= movie.release_date[0, 4] if movie.release_date %></p>
+        <p><strong>Genre :</strong> <%= movie.genres&.join(', ') %></p>
+        <br>
+        <p><strong>Résumé</strong></p>
+        <p><%= movie.overview %></p>
+      </div>
+    </div>
+  </div>
+</div>

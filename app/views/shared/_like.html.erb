@@ -1,7 +1,7 @@
 <% if current_user.likes?(resource) %>
   <%= link_to like_path(Like.find_by(user: current_user, likable: resource)), method: :delete do %>
     <i class="fas fa-heart blue"></i>
-    <p><%= resource.likes.count %></p>
+    <p><%= resource.likes_count %></p>
   <% end %>
 <% else %>
   <%= link_to likes_path(resource_id: resource.id, type: resource.class), method: :post do %>

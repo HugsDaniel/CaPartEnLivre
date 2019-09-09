@@ -1,0 +1,55 @@
+<% content_for :action do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <i class="fas fa-arrow-left fa-lg"></i>
+  <% end %>
+<% end %>
+<% content_for :title do %>
+  <a data-toggle="collapse" href="#groupDetailsCollapse" role="button" aria-expanded="false" aria-controls="groupDetailsCollapse">
+    <%= cl_image_tag (@group.image), crop: :fill, width: 40, height: 40, class: "avatar" %>
+    <p><%= @group.name %></p>
+  </a>
+<% end %>
+
+<div class="collapse" id="groupDetailsCollapse">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= link_to new_group_member_path(@group) do %>
+          <%= icon("fas", "user-plus") %>
+          Ajouter un membre
+        <% end %>
+        <div class="card-group-members">
+          <% @group.members.each do |member| %>
+            <div class="card-group-member">
+              <%= cl_image_tag member.avatar, class: "avatar" %>
+              <p><%= member.first_name %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ul class="nav nav-tabs group-navs">
+  <li class="nav-item">
+    <%= link_to group_books_path(@group), class: "nav-link #{'active' if params[:controller] == 'books'}" do %>
+      <i class="fas fa-book"></i>
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to group_movies_path(@group), class: "nav-link #{'active' if params[:controller] == 'movies'}" do %>
+      <i class="fas fa-film"></i>
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to group_series_index_path(@group), class: "nav-link #{'active' if params[:controller] == 'series'}" do %>
+      <i class="fas fa-tv"></i>
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to group_games_path(@group), class: "nav-link #{'active' if params[:controller] == 'games'}" do %>
+      <i class="fas fa-gamepad"></i>
+    <% end %>
+  </li>
+</ul>

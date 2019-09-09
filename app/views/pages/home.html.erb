@@ -7,7 +7,7 @@
 
 <% if @groups %>
   <% @groups.each do |group| %>
-    <%= link_to group_path(group), class: "group-book-details" do %>
+    <%= link_to group_books_path(group), class: "group-book-details" do %>
       <div class="card-product-group">
         <% if group.image %>
           <%= cl_image_tag group.image, crop: :fill, width: 120, height: 120 %>

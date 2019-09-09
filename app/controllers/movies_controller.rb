@@ -1,6 +1,11 @@
 class MoviesController < ApplicationController
   before_action :set_group
 
+  def index
+    @movies = @group.movies.where(nil).order('likes_count DESC') # creates an anonymous scope
+    @movies = @movies.filtered(params[:movie_genre]).order('likes_count DESC') if params[:movie_genre].present?
+  end
+
   def new
     if params[:search].present?
       @movies = Imdb.search_movie(params[:search][:query])
@@ -17,7 +22,7 @@ class MoviesController < ApplicationController
     @movie.remote_poster_url = @movie.poster_path
 
     if @movie.save
-      redirect_to group_path(id: @group, previous: "movie"), notice: "Bien ajouté !"
+      redirect_to group_movies_path(@group), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end
@@ -36,7 +41,11 @@ class MoviesController < ApplicationController
   end
 
   def get_imdb_url(tmdb_id)
-    response = JSON.parse(open(URI.escape("https://api.themoviedb.org/3/movie/#{tmdb_id}?api_key=#{ENV['TMDB_API_KEY']}&language=en-US")).read)
+    begin
+      response = JSON.parse(open(URI.escape("https://api.themoviedb.org/3/movie/#{tmdb_id}?api_key=#{ENV['TMDB_API_KEY']}&language=en-US")).read)
+    rescue OpenURI::HTTPError
+      return
+    end
 
     imdb_id = response['imdb_id']
 

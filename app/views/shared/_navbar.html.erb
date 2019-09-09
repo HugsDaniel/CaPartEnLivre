@@ -1,6 +1,11 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= yield :action %>
-  <div class="navbar-title">
-    <%= yield :title %>
+  <div class="navbar-left">
+    <%= yield :action %>
+    <div class="navbar-title">
+      <%= yield :title %>
+    </div>
+  </div>
+  <div class="navbar-right">
+    <%= yield :add %>
   </div>
 </div>

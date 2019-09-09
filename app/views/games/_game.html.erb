@@ -1,28 +1,40 @@
-<a class="book-details" data-toggle="collapse" href="#gameDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="gameDetailsCollapse<%= index %>">
+<div class="book-details">
   <div class="card-product">
-    <% if game.background_image %>
-      <%= image_tag game.background_image %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= game.name %></h2>
-      <p><%= game.released %></p>
-    </div>
+    <a class="book-link" data-toggle="collapse" href="#gameDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="gameDetailsCollapse<%= index %>">
+      <% if game.background_image %>
+        <%= cl_image_tag game.background_image, crop: :fill, height: 80, width: 120; %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= game.name %></h2>
+        <p><%= game.released %></p>
+        <p><small>Recommandé par <%= game.user.first_name.capitalize %></small></p>
+      </div>
+    </a>
     <div class="card-product-right">
-      <%= icon('fas', 'chevron-down') %>
+      <div class="card-product-right">
+        <%= render 'shared/like', resource: game %>
+      </div>
     </div>
   </div>
-</a>
+</div>
+
 <div class="collapse book-description" id="gameDetailsCollapse<%= index %>">
   <div class="card-trip">
     <div class="card-trip-infos">
       <div>
-        <%= render 'share', game: game, index: index %>
-
+        <% if game.owner_comment.present? || game.owner_grade.present? %>
+          <div>
+            <p><strong><%= game.user.first_name %> dit :</strong></p>
+            <%= display_stars(game.owner_grade).html_safe %>
+            <p><%= game.owner_comment %></p>
+          </div>
+          <br>
+        <% end %>
         <p><strong>Devs :</strong> <%= game.devs.join(", ") %></p>
         <p><strong>Plateformes :</strong> <%= game.platforms.join(", ") %></p>
-        <p><strong>Genres :</strong> <%= game.genres&.join(", ") %></p>
+        <p><strong>Genres :</strong> <%= game.genres.join(", ") %></p>
         <br>
         <h2>Description</h2>
         <p><%= game.description.html_safe %></p>

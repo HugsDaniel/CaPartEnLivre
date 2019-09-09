@@ -1,0 +1,21 @@
+<% content_for :add do %>
+  <%= link_to new_group_book_path(@group), class: "navbar-brand" do %>
+    <i class="fas fa-plus fa-lg btn-white"></i>
+  <% end %>
+<% end %>
+
+<%= render 'shared/tabs' %>
+
+<% if @books.any? %>
+  <%= form_tag "/groups/#{@group.id}/books", method: :get do %>
+    <div class="filter-input">
+      Filtrer par genre : <%= select_tag :book_genre, options_for_select(Book::GENRES, params[:book_genre]), :onchange => "this.form.submit();" %>
+    </div>
+    <%= hidden_field_tag :previous, "book" %>
+  <% end %>
+  <%@books.each_with_index do |book, index| %>
+    <%= render 'book', book: book, index: index %>
+  <% end %>
+<% else %>
+  <p>Aucun livre pour le moment... Ajoutes-en !</p>
+<% end %>

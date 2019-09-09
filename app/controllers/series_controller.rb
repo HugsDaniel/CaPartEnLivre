@@ -1,6 +1,11 @@
 class SeriesController < ApplicationController
   before_action :set_group
 
+  def index
+    @series = @group.series.where(nil).order('likes_count DESC') # creates an anonymous scope
+    @series = @series.filtered(params[:series_genre]).order('likes_count DESC') if params[:series_genre].present?
+  end
+
   def new
     if params[:search].present?
       @all_series = Imdb.search_series(params[:search][:query])
@@ -16,7 +21,7 @@ class SeriesController < ApplicationController
     @series.remote_poster_url = @series.poster_path
 
     if @series.save
-      redirect_to group_path(id: @group, previous: "series"), notice: "Bien ajouté !"
+      redirect_to group_series_index_path(@group), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end

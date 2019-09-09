@@ -1,20 +1,6 @@
 class GroupsController < ApplicationController
   def show
-    @group    = Group.find(params[:id])
-
-    @books = @group.books.where(nil) # creates an anonymous scope
-    @books = @books.filtered(params[:book_genre]) if params[:book_genre].present?
-
-    @movies = @group.movies.where(nil) # creates an anonymous scope
-    @movies = @movies.filtered(params[:movie_genre]) if params[:movie_genre].present?
-
-    @series = @group.series.where(nil) # creates an anonymous scope
-    @series = @series.filtered(params[:series_genre]) if params[:series_genre].present?
-
-    @games = @group.games.where(nil) # creates an anonymous scope
-    @games = @games.filtered(params[:game_genre]) if params[:game_genre].present?
-
-    @comment  = Comment.new
+    @group = Group.find(params[:id])
   end
 
   def new

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :likes, only: [:destroy, :create]
 
   resources :groups, only: [:new, :create, :show] do
-    resources :books, only: [:new, :create]
-    resources :movies, only: [:new, :create]
-    resources :games, only: [:new, :create]
-    resources :series, only: [:new, :create]
+    resources :books, only: [:index, :show, :new, :create]
+    resources :movies, only: [:index, :show, :new, :create]
+    resources :games, only: [:index, :show, :new, :create]
+    resources :series, only: [:index, :show, :new, :create]
     resources :members, only: [:new, :create]
   end
   resources :users, only: [:edit, :update]

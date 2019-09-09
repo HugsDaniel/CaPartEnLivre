@@ -1,5 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_group, only: [:new, :create]
+  before_action :set_group, only: [:index, :new, :create]
+
+  def index
+    @books = @group.books.where(nil).order('likes_count DESC') # creates an anonymous scope
+    @books = @books.filtered(params[:book_genre]).order('likes_count DESC') if params[:book_genre].present?
+  end
 
   def new
     if params[:search].present?
@@ -15,7 +20,7 @@ class BooksController < ApplicationController
     @book.remote_cover_url = @book.image_link
 
     if @book.save
-      redirect_to group_path(id: @group, previous: "book"), notice: "Bien ajouté !"
+      redirect_to group_books_path(@group), notice: "Bien ajouté !"
     else
       render :new, alert: "Un problème est survenu..."
     end

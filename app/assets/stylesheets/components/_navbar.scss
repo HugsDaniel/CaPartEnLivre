@@ -8,14 +8,15 @@
 .navbar-lewagon {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   background: #00BFFF;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   height: 70px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-left {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-lewagon .navbar-brand i {
@@ -27,8 +28,6 @@
   font-weight: bold;
   font-size: 18px;
   margin-left: 10px;
-  display: flex;
-  align-items: center;
 
   img {
     margin-right: 10px;
@@ -36,5 +35,11 @@
 
   a {
     margin-left: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 }

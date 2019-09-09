@@ -1,29 +1,41 @@
-<a class="book-details" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
+<div class="book-details">
   <div class="card-product">
-    <% if book.image_link %>
-      <%= image_tag book.image_link %>
-    <% else %>
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <% end %>
-    <div class="card-product-infos">
-      <h2><%= book.title %></h2>
-      <p><%= book.authors %></p>
-    </div>
+    <a class="book-link" data-toggle="collapse" href="#bookDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="bookDetailsCollapse<%= index %>">
+      <% unless book.image_link.blank? %>
+        <%= cl_image_tag book.cover, crop: :fill, height: 68, width: 68 %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+      <% end %>
+      <div class="card-product-infos">
+        <h2><%= book.title %></h2>
+        <p><%= book.authors %></p>
+        <p><small>Recommandé par <%= book.user.first_name.capitalize %></small></p>
+      </div>
+    </a>
     <div class="card-product-right">
-      <%= icon('fas', 'chevron-down') %>
+      <%= render 'shared/like', resource: book %>
     </div>
   </div>
-</a>
+</div>
+
 <div class="collapse book-description" id="bookDetailsCollapse<%= index %>">
   <div class="card-trip">
-    <%= render 'share', book: book, index: index %>
     <div class="card-trip-infos">
       <div>
+        <% if book.owner_comment.present? || book.owner_grade.present? %>
+          <div>
+            <p><strong><%= book.user.first_name %> dit :</strong></p>
+            <%= display_stars(book.owner_grade).html_safe %>
+            <p><%= book.owner_comment %></p>
+          </div>
+          <br>
+        <% end %>
         <h2><%= book.published_date[0, 4] if book.published_date %></h2>
-        <p><strong>Genres :</strong> <%= book.genres&.join(", ") %></p>
+        <p><strong>Genres :</strong> <%= book.genres&.join(', ') %> </p>
         <p><strong>Résumé</strong></p>
         <p><%= book.description %></p>
       </div>
     </div>
   </div>
 </div>
+
