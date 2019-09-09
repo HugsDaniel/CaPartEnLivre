@@ -24,7 +24,7 @@
         <% if series.owner_comment.present? || series.owner_grade.present? %>
           <div>
             <p><strong><%= series.user.first_name %> dit :</strong></p>
-            <p><%= series.owner_grade || "-" %>/5 </p>
+            <%= display_stars(series.owner_grade).html_safe %>
             <p><%= series.owner_comment %></p>
           </div>
           <br>

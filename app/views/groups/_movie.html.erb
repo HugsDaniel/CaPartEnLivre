@@ -24,7 +24,7 @@
         <% if movie.owner_comment.present? || movie.owner_grade.present? %>
           <div>
             <p><strong><%= movie.user.first_name %> dit :</strong></p>
-            <p><%= movie.owner_grade || "-" %>/5 </p>
+            <%= display_stars(movie.owner_grade).html_safe %>
             <p><%= movie.owner_comment %></p>
           </div>
           <br>

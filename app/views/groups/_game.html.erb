@@ -27,7 +27,7 @@
         <% if game.owner_comment.present? || game.owner_grade.present? %>
           <div>
             <p><strong><%= game.user.first_name %> dit :</strong></p>
-            <p><%= game.owner_grade || "-" %>/5 </p>
+            <%= display_stars(game.owner_grade).html_safe %>
             <p><%= game.owner_comment %></p>
           </div>
           <br>
