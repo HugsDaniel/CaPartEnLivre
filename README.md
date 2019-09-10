@@ -100,6 +100,7 @@ Dans le terminal :
 Puis :
 
 `cd tuchiparty`
+`git checkout tuchi`
 `bundle install`
 `yarn install`
 `rails db:create db:migrate db:seed`
