@@ -15,4 +15,10 @@ Rails.application.routes.draw do
     resources :members, only: [:new, :create]
   end
   resources :users, only: [:edit, :update]
+
+  namespace :api do
+    namespace :v1 do
+      resources :podcasts, only: :index
+    end
+  end
 end
