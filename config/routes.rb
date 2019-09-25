@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      mount_devise_token_auth_for "User", at: "auth",
+        controllers: {
+          sessions: 'api/v1/devise_token_auth/sessions'
+        }
       resources :podcasts, only: :index
     end
   end

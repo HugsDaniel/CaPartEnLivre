@@ -4,6 +4,8 @@ ruby '2.6.3'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'devise-i18n'
+gem 'devise_token_auth'
+gem 'rack-cors'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'

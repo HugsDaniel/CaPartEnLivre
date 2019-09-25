@@ -1,9 +1,5 @@
-class Api::V1::PodcastsController < ApplicationController
-  skip_before_action :authenticate_user!
-
+class Api::V1::PodcastsController < Api::V1::BaseController
   def index
     @podcasts = Podcast.all
-
-    render json: @podcasts
   end
 end
