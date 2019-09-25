@@ -1,0 +1,27 @@
+<a class="book-details" data-toggle="collapse" href="#podcastDetailsCollapse<%= index %>" role="button" aria-expanded="false" aria-controls="podcastDetailsCollapse<%= index %>">
+  <div class="card-product">
+    <% if podcast.image %>
+      <%= image_tag podcast.image %>
+    <% else %>
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 70px;" />
+    <% end %>
+    <div class="card-product-infos">
+      <h2><%= podcast.title %></h2>
+      <p><%= podcast.publisher %></p>
+    </div>
+    <div class="card-product-right">
+      <%= icon('fas', 'chevron-down') %>
+    </div>
+  </div>
+</a>
+<div class="collapse book-description" id="podcastDetailsCollapse<%= index %>">
+  <div class="card-trip">
+    <div class="card-trip-infos">
+      <div>
+        <%= render 'share', podcast: podcast, index: index %>
+        <p><strong>Résumé</strong></p>
+        <p><%= podcast.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

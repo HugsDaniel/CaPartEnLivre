@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_08_193033) do
+ActiveRecord::Schema.define(version: 2019_09_25_080133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,24 @@ ActiveRecord::Schema.define(version: 2019_09_08_193033) do
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
+  create_table "podcasts", force: :cascade do |t|
+    t.string "image"
+    t.string "genres"
+    t.string "title"
+    t.text "description"
+    t.string "publisher"
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.integer "owner_grade"
+    t.text "owner_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "likes_count", default: 0
+    t.string "image_path"
+    t.index ["group_id"], name: "index_podcasts_on_group_id"
+    t.index ["user_id"], name: "index_podcasts_on_user_id"
+  end
+
   create_table "series", force: :cascade do |t|
     t.string "title"
     t.text "overview"
@@ -162,6 +180,8 @@ ActiveRecord::Schema.define(version: 2019_09_08_193033) do
   add_foreign_key "memberships", "users"
   add_foreign_key "movies", "groups"
   add_foreign_key "movies", "users"
+  add_foreign_key "podcasts", "groups"
+  add_foreign_key "podcasts", "users"
   add_foreign_key "series", "groups"
   add_foreign_key "series", "users"
 end

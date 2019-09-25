@@ -52,4 +52,9 @@
       <i class="fas fa-gamepad"></i>
     <% end %>
   </li>
+  <li class="nav-item">
+    <%= link_to group_podcasts_path(@group), class: "nav-link #{'active' if params[:controller] == 'podcasts'}" do %>
+      <i class="fas fa-podcast"></i>
+    <% end %>
+  </li>
 </ul>

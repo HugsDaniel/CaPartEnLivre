@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :movies, only: [:index, :show, :new, :create]
     resources :games, only: [:index, :show, :new, :create]
     resources :series, only: [:index, :show, :new, :create]
+    resources :podcasts, only: [:index, :show, :new, :create]
     resources :members, only: [:new, :create]
   end
   resources :users, only: [:edit, :update]

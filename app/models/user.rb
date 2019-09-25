@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :liked_movies, through: :likes, source: :likable, source_type: "Movie"
   has_many :liked_series, through: :likes, source: :likable, source_type: "Series"
   has_many :liked_games, through: :likes, source: :likable, source_type: "Game"
+  has_many :liked_podcasts, through: :likes, source: :likable, source_type: "Podcast"
 
   validates :first_name, presence: true
 
@@ -30,6 +31,8 @@ class User < ApplicationRecord
       liked_games.include?(resource)
     elsif resource.class == Series
       liked_series.include?(resource)
+    elsif resource.class == Podcast
+      liked_podcasts.include?(resource)
     end
   end
 end
